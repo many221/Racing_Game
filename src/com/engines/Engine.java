@@ -9,6 +9,7 @@ public abstract class Engine {
 
     //Integers
     protected int currentSpeed;
+    protected int buffPonies;
 
     //Booleans
     protected boolean used = false;
@@ -41,6 +42,10 @@ public abstract class Engine {
 
     public boolean isUsed() {
         return used;
+    }
+
+    public int getBuffPonies() {
+        return buffPonies;
     }
 
     //Setters

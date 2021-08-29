@@ -18,9 +18,9 @@ public abstract class Units {
 
 
     //Metric Conversion
-    public int smallMetricUnitToLargeMetricUnit(int num, int base){
+    public static int smallMetricUnitToLargeMetricUnit(int num, int base){
         int output;
-         output = num*base;
+         output = num/base;
         return output;
     }
 

@@ -1,4 +1,4 @@
-package com.UI;
+package com.UI.CLI;
 
 public class CLI {
 }

@@ -4,7 +4,6 @@ public class IC_Engine extends Engine{
 
     //Integers
     private final int BOOST = 100;
-    private int buffPonies;
     private int turboCount = 0;
     //Booleans
     private boolean hasTurbo = false;
@@ -88,12 +87,12 @@ public class IC_Engine extends Engine{
         return bEngine;
     }
     public static IC_Engine vroom(){
-        IC_Engine vEngine = new IC_Engine ( "V-Enginge","Vroom Vroom",1 );
+        IC_Engine vEngine = new IC_Engine ( "V-Engine","Vroom Vroom",1 );
         return vEngine;
     }
 
     public static IC_Engine zoom(){
-        IC_Engine zEngine = new IC_Engine ( "Z-Enginge","Zoom Zoom",2 );
+        IC_Engine zEngine = new IC_Engine ( "Z-Engine","Zoom Zoom",2 );
         return zEngine;
     }
 

@@ -33,4 +33,20 @@ public class Driver extends People{
                 ", AGE=" + AGE +
                 '}';
     }
+
+    public Driver getLilSis(String name){
+        Driver lilsis = new Driver (name,7,0 );
+        return lilsis;
+    }
+
+    public Driver youDrive(String name, int age){
+        Driver you = new Driver ( name, age,1 );
+        return you;
+    }
+
+    public Driver racingGod(){
+        Driver lewis = new Driver ( "Lewis Hamilton",36,2 );
+        return lewis;
+    }
+
 }

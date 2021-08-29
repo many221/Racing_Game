@@ -3,6 +3,9 @@ package com.vehicles;
 import com.engines.Engine;
 import com.units_of_measurements.Units;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+
 public abstract class Vehicle {
 
      /*
@@ -21,29 +24,47 @@ public abstract class Vehicle {
     public final String NAME;
     public final String MAKE;
     public final static String[][] UoM = Units.METRIC_UNITS;
-    private String weightUnit;
+    protected String weightUnit;
     //Engine
-    private Engine powaMaker;
+    protected Engine powaMaker;
 
     //Integers
-    private int weight;
-    private int topSpeed;
-
-    //Booleans
+    protected int weight;
 
 
-    public Vehicle(String name, String make, int weight,int uom) {
+
+    //Constructor
+    public Vehicle(String name, String make, int uom, Engine engine) {
         NAME = name;
         MAKE = make;
-        this.weight = weight;
+        powaMaker = engine;
         weightUnit = UoM[0][uom];
+    }
+
+    public void addPowaMaker(Engine newEngine) {powaMaker = newEngine;
+    }
+
+
+    //GUI Stuff
+    public void keyPressed(KeyEvent e) {
 
     }
 
-    public void addPowaMaker(Engine newEngine) {
-        powaMaker = newEngine;
+    public void keyReleased(KeyEvent e) {
+
     }
 
+    public void setYDirection(int yDirection){
+
+    }
+
+    public void move(){
+
+    }
+
+    public void draw(Graphics g){
+
+    }
 
 
 }
