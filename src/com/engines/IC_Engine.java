@@ -80,8 +80,7 @@ public class IC_Engine extends Engine{
 //
 //    }
 
-    //Premade Engine Getters
-
+    //Premade Engines
     public static IC_Engine broom(){
         IC_Engine bEngine = new IC_Engine ( "B-Engine","Broom Broom",0 );
         return bEngine;

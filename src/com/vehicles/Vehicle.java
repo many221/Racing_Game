@@ -32,18 +32,26 @@ public abstract class Vehicle {
     protected int weight;
 
 
-
     //Constructor
-    public Vehicle(String name, String make, int uom, Engine engine) {
+    public Vehicle(String name, String make, int uom) {
+        NAME = name;
+        MAKE = make;
+        weightUnit = UoM[0][uom];
+    }
+    public Vehicle(String name, String make, int uom,Engine engine) {
         NAME = name;
         MAKE = make;
         powaMaker = engine;
         weightUnit = UoM[0][uom];
     }
 
-    public void addPowaMaker(Engine newEngine) {powaMaker = newEngine;
+    public void addPowaMaker(Engine newEngine) {
+        powaMaker = newEngine;
     }
 
+    public Engine getPowaMaker() {
+        return powaMaker;
+    }
 
     //GUI Stuff
     public void keyPressed(KeyEvent e) {

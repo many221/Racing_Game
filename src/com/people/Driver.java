@@ -7,7 +7,7 @@ public class Driver extends People{
     //Integers
     private int skill;
     //Strings
-    public String skillLevel  = SKILL_CHART[skill];
+    private String skillLevel  = SKILL_CHART[skill];
     //Booleans
     private boolean keys = false;
 
@@ -34,17 +34,27 @@ public class Driver extends People{
                 '}';
     }
 
-    public Driver getLilSis(String name){
+    //Getters
+    public int getSkill() {
+        return skill;
+    }
+
+    public String getSkillLevel() {
+        return skillLevel;
+    }
+
+    //Premade Drivers
+    public static Driver getLilSis(String name){
         Driver lilsis = new Driver (name,7,0 );
         return lilsis;
     }
 
-    public Driver youDrive(String name, int age){
+    public static Driver youDrive(String name, int age){
         Driver you = new Driver ( name, age,1 );
         return you;
     }
 
-    public Driver racingGod(){
+    public static Driver racingGod(){
         Driver lewis = new Driver ( "Lewis Hamilton",36,2 );
         return lewis;
     }
