@@ -43,11 +43,13 @@ public class Car extends Vehicle{
             case 1 -> {
                 this.driver = driver;
                 xVelocity -= 1;
+                brakingRate -=1;
 
             }
             case 3 -> {
                 this.driver = driver;
                 xVelocity += 1;
+                brakingRate += 1;
 
             }
         }this.driver = driver;
