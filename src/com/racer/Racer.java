@@ -7,6 +7,14 @@ import com.vehicles.Car;
 
 public class Racer {
 
+    private String sisName;
+    private String yourName;
+    private int yourAge;
+   public Car[] carArr = new Car[]{Car.yaris (),Car.mustang (),Car.mach_5 ()};
+   public Engine[] engineArr = new Engine[]{IC_Engine.broom (),IC_Engine.vroom (),IC_Engine.zoom ()};
+   public Driver[] driverArr = new Driver[]{Driver.getLilSis ( sisName ),Driver.youDrive(yourName,yourAge),Driver.racingGod ()};
+
+   private int ID;
    private Driver driver;
 
    private Car car;
@@ -23,8 +31,8 @@ public class Racer {
    }
 
    //Custom Builds
-  public Racer buildRacer(Driver driver,Car car,Engine engine){
-       Racer customRacer = new Racer ( driver,car,engine);
+  public Racer buildRacer(int driver, int car , int engine){
+       Racer customRacer = new Racer ( driverArr[driver],carArr[car],engineArr[engine]);
        return  customRacer;
   }
 
@@ -35,12 +43,12 @@ public class Racer {
   }
 
   public static Racer youRacer() {
-      Racer youRacer = new Racer ( Driver.racingGod (), Car.mach_5 (), IC_Engine.zoom () );
+      Racer youRacer = new Racer ( Driver.youDrive ( "You", 99), Car.mach_5 (), IC_Engine.zoom () );
       return youRacer;
   }
 
   public static Racer lilSisRacer() {
-      Racer lilSisRacer = new Racer ( Driver.getLilSis ( "Tati" ), Car.yaris (), IC_Engine.broom () );
+      Racer lilSisRacer = new Racer ( Driver.getLilSis ("Sis" ), Car.yaris (), IC_Engine.broom () );
       return lilSisRacer;
   }
 

@@ -8,7 +8,6 @@ public abstract class Engine {
     protected String engineSound;
 
     //Integers
-    protected int currentSpeed;
     protected int buffPonies;
 
     //Booleans

@@ -1,7 +1,5 @@
 package com.vehicles;
 
-import com.engines.Engine;
-import com.engines.IC_Engine;
 import com.people.Driver;
 import com.units_of_measurements.Units;
 
@@ -12,6 +10,7 @@ public class Car extends Vehicle{
     //Occupant
     private Driver driver;
     //integers
+    private int currentSpeed = 0;
     private int xVelocity;
     private int brakingRate;
 
@@ -60,6 +59,27 @@ public class Car extends Vehicle{
         return topVelocity;
     }
 
+    public void gasPedal(){
+        int fullSpeed = currentSpeed + xVelocity;
+        int lowSpeed = currentSpeed + 1;
+        if(fullSpeed<=getTopVelocity ()){
+           currentSpeed += xVelocity;
+        }else if (lowSpeed <=getTopVelocity ()){
+            currentSpeed++;
+        }
+    }
+
+    public void brakePedal(){
+        int fullBraking = currentSpeed - brakingRate;
+        int lowBraking = currentSpeed - 1;
+       if (fullBraking >= 0){
+           currentSpeed -= brakingRate;
+       }else if(lowBraking >= 0){
+           currentSpeed--;
+       }
+    }
+
+
     //Testing
     @Override
     public String toString() {
@@ -75,12 +95,12 @@ public class Car extends Vehicle{
                 '}';
     }
 
-    public static void main(String[] args) {
-        Car mach_5 = new Car ( "Mach 5","Mifune Motors",0,0);
-       mach_5.addDriver ( Driver.getLilSis ( "Tati") );
-        System.out.println (mach_5.toString ());
-
-    }
+//    public static void main(String[] args) {
+//        Car mach_5 = new Car ( "Mach 5","Mifune Motors",0,0);
+//       mach_5.addDriver ( Driver.getLilSis ( "Tati") );
+//        System.out.println (mach_5.toString ());
+//
+//    }
 
     //Premade Vehicles
     public static Car mach_5(){
