@@ -31,9 +31,6 @@ public abstract class Engine {
 
     //Getters
 
-    public String getNAME() {
-        return NAME;
-    }
 
     public boolean isOn() {
         return on;
@@ -41,6 +38,10 @@ public abstract class Engine {
 
     public boolean isUsed() {
         return used;
+    }
+
+    public String getEngineSound() {
+        return engineSound;
     }
 
     public int getBuffPonies() {

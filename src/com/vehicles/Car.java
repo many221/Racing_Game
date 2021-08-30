@@ -1,5 +1,6 @@
 package com.vehicles;
 
+import com.engines.IC_Engine;
 import com.people.Driver;
 import com.units_of_measurements.Units;
 
@@ -13,6 +14,9 @@ public class Car extends Vehicle{
     private int currentSpeed = 0;
     private int xVelocity;
     private int brakingRate;
+
+    //Booleans
+    boolean on;
 
     //Constructor
     public Car(String name, String make, int weightClass, int uom) {
@@ -59,19 +63,30 @@ public class Car extends Vehicle{
         return topVelocity;
     }
 
+    public void turnOnOff(){
+        on = !on;
+        if(hasEngine){
+            powaMaker.setOn ( !powaMaker.isOn () );
+            if(powaMaker.isOn ())System.out.println (powaMaker.getEngineSound ());
+        }
+    }
     public void gasPedal(){
-        int fullSpeed = currentSpeed + xVelocity;
-        int lowSpeed = currentSpeed + 1;
-        if(fullSpeed<=getTopVelocity ()){
-           currentSpeed += xVelocity;
-        }else if (lowSpeed <=getTopVelocity ()){
-            currentSpeed++;
+        if(on) {
+            int fullSpeed = currentSpeed + xVelocity;
+            int lowSpeed = currentSpeed + 1;
+            powaMaker.setUsed ( true );
+            if (fullSpeed <= getTopVelocity ()) {
+                currentSpeed += xVelocity;
+            } else if (lowSpeed <= getTopVelocity ()) {
+                currentSpeed++;
+            }
         }
     }
 
     public void brakePedal(){
         int fullBraking = currentSpeed - brakingRate;
         int lowBraking = currentSpeed - 1;
+        powaMaker.setUsed ( false );
        if (fullBraking >= 0){
            currentSpeed -= brakingRate;
        }else if(lowBraking >= 0){
@@ -83,16 +98,13 @@ public class Car extends Vehicle{
     //Testing
     @Override
     public String toString() {
-        return "Car{" +
-                "driver=" + driver +
-                ", xVelocity=" + xVelocity +
-                ", brakingRate=" + brakingRate +
-                ", NAME='" + NAME + '\'' +
-                ", MAKE='" + MAKE + '\'' +
-                ", weightUnit='" + weightUnit + '\'' +
-                ", powaMaker=" + powaMaker +
-                ", weight=" + weight +
-                '}';
+        return "\n|Car:" +
+                " Name:'" + NAME + '\'' +
+                ", Make: '" + MAKE + '\'' +
+                ", Acceleration: " + xVelocity +
+                ", Braking: " + brakingRate +
+                ", weight:" + weight +" "+weightUnit+
+                " |";
     }
 
 //    public static void main(String[] args) {

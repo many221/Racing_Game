@@ -64,12 +64,11 @@ public class IC_Engine extends Engine{
 
     @Override
     public String toString() {
-        return  NAME +" {" +
-                ", buffPonies=" + buffPonies +
-                ", turboCount=" + turboCount +
-                ", hasTurbo=" + hasTurbo +
+        return "\n|Engine: "+ NAME +
+                ", buffPonies:" + buffPonies +
+                ", turboCount: " + turboCount +
                 ", speedLEVEL='" + speedLEVEL + '\'' +
-                '}';
+                " |";
     }
 
     //Testings

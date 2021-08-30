@@ -27,7 +27,7 @@ public abstract class Vehicle {
     protected String weightUnit;
     //Engine
     protected Engine powaMaker;
-
+    protected boolean hasEngine = false;
     //Integers
     protected int weight;
 
@@ -47,6 +47,7 @@ public abstract class Vehicle {
 
     public void addPowaMaker(Engine newEngine) {
         powaMaker = newEngine;
+        hasEngine = true;
     }
 
     public Engine getPowaMaker() {

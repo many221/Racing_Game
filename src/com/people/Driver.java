@@ -26,12 +26,11 @@ public class Driver extends People{
 
     @Override
     public String toString() {
-        return "Driver{" +
-                "skillLevel='" + skillLevel + '\'' +
-                ", keys=" + keys +
-                ", NAME='" + NAME + '\'' +
-                ", AGE=" + AGE +
-                '}';
+        return "\n|Driver:" +
+                ", Name:" + NAME + '\'' +
+                ", Age:" + AGE +
+                ", Skill Level:'" + skillLevel + '\'' +
+                " |";
     }
 
     //Getters

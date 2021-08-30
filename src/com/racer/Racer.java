@@ -7,58 +7,54 @@ import com.vehicles.Car;
 
 public class Racer {
 
-    private String sisName;
-    private String yourName;
-    private int yourAge;
-   public Car[] carArr = new Car[]{Car.yaris (),Car.mustang (),Car.mach_5 ()};
-   public Engine[] engineArr = new Engine[]{IC_Engine.broom (),IC_Engine.vroom (),IC_Engine.zoom ()};
-   public Driver[] driverArr = new Driver[]{Driver.getLilSis ( sisName ),Driver.youDrive(yourName,yourAge),Driver.racingGod ()};
+    private static String sisName = "Sis";
+    private static String yourName = "You";
+    private static int yourAge = 99;
+    private static final  Car[] carArr = new Car[]{Car.yaris (),Car.mustang (),Car.mach_5 ()};
+    private static final  Engine[] engineArr = new Engine[]{IC_Engine.broom (),IC_Engine.vroom (),IC_Engine.zoom ()};
+    private static final  Driver[] driverArr = new Driver[]{Driver.getLilSis ( sisName ),Driver.youDrive(yourName,yourAge),Driver.racingGod ()};
 
-   private int ID;
-   private Driver driver;
 
-   private Car car;
+   public final Driver driver;
 
-   private Engine engine;
+   public final Car car;
 
-   public Racer(Driver driver, Car car, Engine engine) {
-        this.driver = driver;
-        this.car = car;
-        this.engine = engine;
-        this.car.addPowaMaker ( engine );
-        this.car.addDriver ( driver );
+   public final Engine engine;
 
-   }
+    public Racer(int driverIndex, int carIndex, int engineIndex) {
+        driver = driverArr[driverIndex];
+        car = carArr[carIndex];
+        engine = engineArr[engineIndex];
+        car.addPowaMaker ( engine );
+        car.addDriver ( driver );
+    }
 
-   //Custom Builds
-  public Racer buildRacer(int driver, int car , int engine){
-       Racer customRacer = new Racer ( driverArr[driver],carArr[car],engineArr[engine]);
+
+    //Custom Builds
+  public static Racer buildRacer(int driver, int car , int engine){
+       Racer customRacer = new Racer (driver,car,engine);
        return  customRacer;
   }
 
   //PreBuilds
   public static Racer godRacer(){
-     Racer godRacer= new Racer ( Driver.racingGod (),Car.mach_5 (),IC_Engine.zoom () );
+     Racer godRacer= new Racer (2,2,2);
      return godRacer;
   }
 
   public static Racer youRacer() {
-      Racer youRacer = new Racer ( Driver.youDrive ( "You", 99), Car.mach_5 (), IC_Engine.zoom () );
+      Racer youRacer = new Racer ( 1,1,1 );
       return youRacer;
   }
 
   public static Racer lilSisRacer() {
-      Racer lilSisRacer = new Racer ( Driver.getLilSis ("Sis" ), Car.yaris (), IC_Engine.broom () );
+      Racer lilSisRacer = new Racer ( 0,0,0);
       return lilSisRacer;
   }
 
     @Override
     public String toString() {
-        return "Racer{" +
-                "driver=" + driver.NAME +
-                ", car=" + car +
-                ", engine=" + engine +
-                '}';
+        return "Racer{" + driver + car + engine + "\n}";
     }
 
     public static void main(String[] args) {
