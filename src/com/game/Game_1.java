@@ -1,6 +1,5 @@
 package com.game;
 
-import com.UI.CLI.CLI;
 import com.UI.CLI.Game_1_CLI;
 import com.enviroment.Course;
 import com.racer.Racer;

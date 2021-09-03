@@ -134,21 +134,21 @@ public abstract class Game_1_CLI {
     public static int gasOrBrake(Racer racer, Course course){
         Game_1_CLI_Graphics graphics;
         graphics = new Game_1_CLI_Graphics (racer, course);
-//        Game_1_CLI_Graphics.getGraphics (racer.car.getOdometer ());
+  //      Game_1_CLI_Graphics.getGraphics (racer.car.getOdometer ());
         out.print ("Gas Or Brake: ");
         String ui = input.nextLine ();
         switch (ui){
             case "A","a" ->{
-                //Game_1_CLI_Graphics.getGraphics (racer.car.getOdometer ());
+                Game_1_CLI_Graphics.getGraphics (racer.car.getOdometer ());
                 racer.car.gasPedal ();
                 out.println (racer.car.getPowaMaker ().getEngineSound () + " Speedometer: "+ racer.car.getSpeedometer ());
             }
             case "D","d" ->{
-               // Game_1_CLI_Graphics.getGraphics (racer.car.getOdometer ());
+               Game_1_CLI_Graphics.getGraphics (racer.car.getOdometer ());
                 out.println ("~Braking Sound~"  + " Speedometer: "+ racer.car.getSpeedometer ());
             }
             default -> {
-              //  Game_1_CLI_Graphics.getGraphics (racer.car.getOdometer ());
+                Game_1_CLI_Graphics.getGraphics (racer.car.getOdometer ());
                 out.println ("Car Will Just Coast"  + " Speedometer: "+ racer.car.getSpeedometer ());
                 racer.car.coast ();
             }
