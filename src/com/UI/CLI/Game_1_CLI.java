@@ -3,6 +3,8 @@ package com.UI.CLI;
 import com.enviroment.Course;
 import com.game.Game_1;
 import com.racer.Racer;
+import com.utlities.FilterUI;
+
 import java.util.Scanner;
 import static java.lang.System.out;
 
@@ -135,8 +137,7 @@ public abstract class Game_1_CLI {
         Game_1_CLI_Graphics graphics;
         graphics = new Game_1_CLI_Graphics (racer, course);
   //      Game_1_CLI_Graphics.getGraphics (racer.car.getOdometer ());
-        out.print ("Gas Or Brake: ");
-        String ui = input.nextLine ();
+        String ui = FilterUI.getString ( "Gas Or Brake: ", true );
         switch (ui){
             case "A","a" ->{
                 Game_1_CLI_Graphics.getGraphics (racer.car.getOdometer ());
@@ -170,12 +171,9 @@ public abstract class Game_1_CLI {
                     out.println ("I See Your Ready To Lose Again!");
                     return true;
                 }
-                case "N","n","No","no" ->{
+                default -> {
                     out.println ("See Ya Later Slowpoke!");
                     return false;
-                }
-                default -> {
-                  return false;
                 }
             }
 
