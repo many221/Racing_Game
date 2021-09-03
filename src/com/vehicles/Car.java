@@ -11,30 +11,29 @@ public class Car extends Vehicle{
     //Occupant
     private Driver driver;
     //integers
-    private int currentSpeed = 0;
-    private int xVelocity;
+    private int acceleration;
     private int brakingRate;
 
     //Booleans
     boolean on;
 
     //Constructor
-    public Car(String name, String make, int weightClass, int uom) {
-        super ( name, make, uom );
+    public Car(String name, String make, int weightClass, int uom, String carIcon) {
+        super ( name, make, uom,carIcon);
 
         switch (weightClass+1){
             case 1 -> {
-                xVelocity = 5;
+                acceleration = 5;
                 brakingRate = 3;
                 weight = WEIGHT_CLASSES[0];
             }
             case 2 -> {
-                xVelocity = 4;
+                acceleration = 4;
                 brakingRate = 2;
                 weight = WEIGHT_CLASSES[1];
             }
             default-> {
-                xVelocity = 3;
+                acceleration = 3;
                 brakingRate = 2;
                 weight = WEIGHT_CLASSES[2];
             }
@@ -42,17 +41,20 @@ public class Car extends Vehicle{
     }
 
     public void addDriver(Driver driver){
-        switch (driver.getSkill ()+1){
-            case 1 -> {
-                this.driver = driver;
-                xVelocity -= 1;
+        switch (driver.getSkill ()){
+            case 0 -> {
+
+                acceleration -= 1;
                 brakingRate -=1;
 
             }
-            case 3 -> {
-                this.driver = driver;
-                xVelocity += 1;
+            case 1 ->{
+                acceleration += 1;
                 brakingRate += 1;
+            }
+            case 2 -> {
+                acceleration += 3;
+                brakingRate += 3;
 
             }
         }this.driver = driver;
@@ -70,38 +72,46 @@ public class Car extends Vehicle{
             if(powaMaker.isOn ())System.out.println (powaMaker.getEngineSound ());
         }
     }
+
+    
     public void gasPedal(){
-        if(on) {
-            int fullSpeed = currentSpeed + xVelocity;
-            int lowSpeed = currentSpeed + 1;
+
+            int fullSpeed = speedometer + acceleration;
+            int lowSpeed = speedometer + 1;
             powaMaker.setUsed ( true );
             if (fullSpeed <= getTopVelocity ()) {
-                currentSpeed += xVelocity;
+                speedometer += acceleration;
             } else if (lowSpeed <= getTopVelocity ()) {
-                currentSpeed++;
+                speedometer++;
             }
-        }
+
+//        speedometer += acceleration;
+        odometer += speedometer;
     }
 
     public void brakePedal(){
-        int fullBraking = currentSpeed - brakingRate;
-        int lowBraking = currentSpeed - 1;
+        int fullBraking = speedometer - brakingRate;
+        int lowBraking = speedometer - 1;
         powaMaker.setUsed ( false );
        if (fullBraking >= 0){
-           currentSpeed -= brakingRate;
+           speedometer -= (fullBraking/brakingRate);
        }else if(lowBraking >= 0){
-           currentSpeed--;
+           speedometer--;
        }
+        odometer += speedometer;
     }
+
+
 
 
     //Testing
     @Override
     public String toString() {
-        return "\n|Car:" +
+        return "\n|Car: " + ICON +
                 " Name:'" + NAME + '\'' +
                 ", Make: '" + MAKE + '\'' +
-                ", Acceleration: " + xVelocity +
+                ", Top Speed: '" + getTopVelocity () + '\'' +
+                ", Acceleration: " + acceleration +
                 ", Braking: " + brakingRate +
                 ", weight:" + weight +" "+weightUnit+
                 " |";
@@ -115,19 +125,14 @@ public class Car extends Vehicle{
 //    }
 
     //Premade Vehicles
-    public static Car mach_5(){
-        Car mach_5 = new Car ( "Mach 5","Mifune Motors",1,0);
-        return mach_5;
-    }
+    public static Car mach_5(){return new Car ( "Mach 5","Mifune Motors",1,0,"🏎");}
 
     public static  Car mustang (){
-        Car mustang = new Car ( "Mustang","Ford",2,0 );
-        return mustang;
+        return new Car ( "Mustang","Ford",2,0,"🛻" );
     }
 
     public static  Car yaris (){
-        Car yaris = new Car ( "Yaris","Toyota",0,0);
-        return yaris;
+        return new Car ( "Yaris","Toyota",0,0,"🚗");
     }
 
 }

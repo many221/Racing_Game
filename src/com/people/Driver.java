@@ -7,16 +7,14 @@ public class Driver extends People{
     //Integers
     private int skill;
     //Strings
-    private String skillLevel  = SKILL_CHART[skill];
+    private String skillLevel;
     //Booleans
     private boolean keys = false;
 
-    public Driver(String NAME, int AGE, int skill) {
-        super ( NAME, AGE, "Driver" );
-
-        if(skill > 3){
-           this.skill = skill;
-        }else this.skill = 0;
+    public Driver(String NAME, int AGE,String icon, int skill) {
+        super ( NAME, AGE, icon, "Driver" );
+        this.skill = skill;
+        skillLevel = SKILL_CHART[skill];
     }
 
     //Setters
@@ -26,7 +24,7 @@ public class Driver extends People{
 
     @Override
     public String toString() {
-        return "\n|Driver:" +
+        return "\n|Driver: " + ICON +
                 ", Name:" + NAME + '\'' +
                 ", Age:" + AGE +
                 ", Skill Level:'" + skillLevel + '\'' +
@@ -38,24 +36,15 @@ public class Driver extends People{
         return skill;
     }
 
-    public String getSkillLevel() {
-        return skillLevel;
-    }
-
     //Premade Drivers
-    public static Driver getLilSis(String name){
-        Driver lilsis = new Driver (name,7,0 );
-        return lilsis;
-    }
+    public static Driver getLilSis(String name){return new Driver (name,7,"👧",0 );}
 
     public static Driver youDrive(String name, int age){
-        Driver you = new Driver ( name, age,1 );
-        return you;
+        return new Driver ( name, age,"👴",1 );
     }
 
     public static Driver racingGod(){
-        Driver lewis = new Driver ( "Lewis Hamilton",36,2 );
-        return lewis;
+        return new Driver ( "Lewis Hamilton",36,"🤴",2 );
     }
 
 }

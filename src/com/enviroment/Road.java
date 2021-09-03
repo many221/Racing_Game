@@ -8,6 +8,9 @@ public class Road extends Rectangle {
     static int GAME_WIDTH;
     static int GAME_HEIGHT;
 
+    //CLI Stuff
+    private int end;
+
     public Road(int width, int height){
         GAME_WIDTH = width;
         GAME_HEIGHT = height;
@@ -25,6 +28,27 @@ public class Road extends Rectangle {
 
     public int getRoadLength() {
         return roadLength;
+    }
+
+    public FinishLine getGoalSpot(){
+         end = roadLength - (roadLength/20);
+        return new FinishLine (end);
+    }
+
+    public int getGoal() {
+        return end;
+    }
+
+    //Premade Roads
+    public static Road shortRoad(){
+        return new Road ( 40 );
+    }
+
+    public static Road mediumRoad(){
+        return new Road ( 60 );
+    }
+    public static  Road longRoad(){
+        return new Road ( 80 );
     }
 
 }

@@ -81,17 +81,14 @@ public class IC_Engine extends Engine{
 
     //Premade Engines
     public static IC_Engine broom(){
-        IC_Engine bEngine = new IC_Engine ( "B-Engine","Broom Broom",0 );
-        return bEngine;
+        return new IC_Engine ( "B-Engine","~Broom Broom~",0 );
     }
     public static IC_Engine vroom(){
-        IC_Engine vEngine = new IC_Engine ( "V-Engine","Vroom Vroom",1 );
-        return vEngine;
+        return new IC_Engine ( "V-Engine","~Vroom Vroom~",1 );
     }
 
     public static IC_Engine zoom(){
-        IC_Engine zEngine = new IC_Engine ( "Z-Engine","Zoom Zoom",2 );
-        return zEngine;
+        return new IC_Engine ( "Z-Engine","~Zoom Zoom~",2 );
     }
 
 

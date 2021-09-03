@@ -25,13 +25,11 @@ public class FinishLine extends Rectangle {
 
     //CLI Stuff
     private int finishLine;
-    private ArrayList<Racer> podiumList = new ArrayList<Racer> ();
+
 
     FinishLine(int goal){
         finishLine = goal;
     }
 
-    public void getWhoCrossed(Racer place){
-        podiumList.add ( place );
-    }
+
 }

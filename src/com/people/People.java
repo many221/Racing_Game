@@ -4,11 +4,13 @@ public abstract class People {
 
     public final String NAME;
     public final int AGE;
+    public final String ICON;
     private String profession;
 
-    public People(String NAME, int AGE, String profession) {
+    public People(String NAME, int AGE, String icon, String profession) {
         this.NAME = NAME;
         this.AGE = AGE;
+        ICON = icon;
         this.profession = profession;
     }
 

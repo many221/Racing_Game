@@ -7,8 +7,8 @@ import com.vehicles.Car;
 
 public class Racer {
 
-    private static String sisName = "Sis";
-    private static String yourName = "You";
+    private static final String sisName = "Sis";
+    private static final String yourName = "You";
     private static int yourAge = 99;
     private static final  Car[] carArr = new Car[]{Car.yaris (),Car.mustang (),Car.mach_5 ()};
     private static final  Engine[] engineArr = new Engine[]{IC_Engine.broom (),IC_Engine.vroom (),IC_Engine.zoom ()};
@@ -38,18 +38,15 @@ public class Racer {
 
   //PreBuilds
   public static Racer godRacer(){
-     Racer godRacer= new Racer (2,2,2);
-     return godRacer;
+      return new Racer (2,2,2);
   }
 
   public static Racer youRacer() {
-      Racer youRacer = new Racer ( 1,1,1 );
-      return youRacer;
+      return new Racer ( 1,1,1 );
   }
 
   public static Racer lilSisRacer() {
-      Racer lilSisRacer = new Racer ( 0,0,0);
-      return lilSisRacer;
+      return new Racer ( 0,0,0);
   }
 
     @Override
@@ -57,7 +54,4 @@ public class Racer {
         return "Racer{" + driver + car + engine + "\n}";
     }
 
-    public static void main(String[] args) {
-        System.out.println (lilSisRacer ().toString ());
-    }
 }

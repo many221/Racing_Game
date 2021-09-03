@@ -23,6 +23,7 @@ public abstract class Vehicle {
     //Strings
     public final String NAME;
     public final String MAKE;
+    public final String ICON;
     public final static String[][] UoM = Units.METRIC_UNITS;
     protected String weightUnit;
     //Engine
@@ -30,20 +31,23 @@ public abstract class Vehicle {
     protected boolean hasEngine = false;
     //Integers
     protected int weight;
-
+    protected int odometer;
+    protected int speedometer;
 
     //Constructor
-    public Vehicle(String name, String make, int uom) {
+    public Vehicle(String name, String make, int uom, String carIcon) {
         NAME = name;
         MAKE = make;
         weightUnit = UoM[0][uom];
+        ICON = carIcon;
     }
-    public Vehicle(String name, String make, int uom,Engine engine) {
-        NAME = name;
-        MAKE = make;
-        powaMaker = engine;
-        weightUnit = UoM[0][uom];
-    }
+//    public Vehicle(String name, String make, int uom,Engine engine) {
+//        NAME = name;
+//        MAKE = make;
+//        powaMaker = engine;
+//        weightUnit = UoM[0][uom];
+//
+//    }
 
     public void addPowaMaker(Engine newEngine) {
         powaMaker = newEngine;
@@ -52,6 +56,18 @@ public abstract class Vehicle {
 
     public Engine getPowaMaker() {
         return powaMaker;
+    }
+
+    public int getOdometer() {
+        return odometer;
+    }
+    public void coast(){
+        speedometer--;
+        odometer += speedometer;
+    }
+
+    public int getSpeedometer() {
+        return speedometer;
     }
 
     //GUI Stuff
