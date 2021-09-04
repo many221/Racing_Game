@@ -16,8 +16,7 @@ public abstract class Game_1_CLI {
 
 
     public static void startGame(){
-      out.print ("Hello There!\nDo You Want To Race?\nY|N: ");
-      String firstPrompt = input.nextLine ();
+      String firstPrompt = FilterUI.getString ( "Hello There!\nDo You Want To Race?\nY|N: ",true );
      while (!validEntry){
       switch (firstPrompt){
           case "Y","y","Yes","yes" ->{
@@ -45,34 +44,26 @@ public abstract class Game_1_CLI {
 
     public static Racer chooseRacer (){
         Racer chosenRacer = null;
-        out.print ("Choose An Option!\n1) Build Your Own Racer\n2) Choose A Prebuilt One?\nSelection: ");
-        int ui = input.nextInt ();
+        int ui = FilterUI.getInt ( 1,2,"Choose An Option!\n1) Build Your Own Racer\n2) Choose A Prebuilt One?\nSelection: " );
             switch (ui){
                 case 1 -> {
                     shortspacing ();
-                    int driver;
-                    int car;
-                    int engine;
-
-                    out.print ("Welcome To Build~A~Racer!\n Let's Choose A Driver!\n1) Lewis Hamilton\n2) You\n3) Your Lil Sister\nSelection: ");
-                     driver = input.nextInt ();
-                     input.nextLine ();
-                    out.print ("Let's Choose A Car!\n1) Mach 5\n2) Mustang\n3) Yaris\nSelection: ");
-                    car = input.nextInt ();
-                    input.nextLine ();
-                    out.print ("Let's Choose An Engine!\n1) B-Engine\n2) V-Engine\n3) Z-Engine\nSelection: ");
-                    engine = input.nextInt ();
-                    input.nextLine ();
-                    out.println ("That's A Mighty Fine Build You've Got There.");
-                    driver--;car--;engine--;
-                    chosenRacer = Racer.buildRacer ( driver,car,engine );
+                    int driver = 0;
+                    int car = 0;
+                    int engine = 0;
+                     driver = FilterUI.getInt (1,3,"Welcome To Build~A~Racer!\n Let's Choose A Driver!\n1) Lewis Hamilton\n2) You\n3) Your Lil Sister\nSelection: "  );
+                     car = FilterUI.getInt ( 1,3,"Let's Choose A Car!\n1) Mach 5\n2) Mustang\n3) Yaris\nSelection: " );
+                     engine = FilterUI.getInt ( 1,3,"Let's Choose An Engine!\n1) B-Engine\n2) V-Engine\n3) Z-Engine\nSelection: " );
+                     out.println ("That's A Mighty Fine Build You've Got There.");
+                     driver--;car--;engine--;
+                     chosenRacer = Racer.buildRacer ( driver,car,engine );
 
                 }
                 case 2 ->{
                     shortspacing ();
-                    out.print ("Please Choose A Racer!\n1) Lewis Hamilton And His Mach 5\n2) You And Your Mustang\n3) Your Lil Sister And Her Yaris\nSelection: ");
 
-                    int ui2 = input.nextInt ();
+                    int ui2 = FilterUI.getInt ( 1,3,"Please Choose A Racer!\n1) Lewis Hamilton And His Mach 5\n2) You And Your Mustang\n3) Your Lil Sister And Her Yaris\nSelection: " );
+                    input.nextLine ();
                     shortspacing ();
 
                     switch (ui2){
@@ -104,6 +95,7 @@ public abstract class Game_1_CLI {
         Course chosenCourse;
         out.print ("Alrighty Then Let's Choose A Course\n1) Short Course\n2) Medium Course \n3) Long Course\nSelection: ");
         int ui = input.nextInt ();
+        input.nextLine ();
         switch (ui){
             case 1 ->{
                 out.println ("You Have Chosen The Short Course Which is " + Course.smallCourse ().ROAD.getRoadLength () + "Km Long");
@@ -122,15 +114,14 @@ public abstract class Game_1_CLI {
     }
 
     public static int startEngines(Racer racer){
-        out.print ("To start Enginge Type \"On\"\n!!!RACERS START YOUR ENGINES!!!\nstart: ");
-        String ui = input.nextLine ();
+        String ui = FilterUI.getString ( "To start Enginge Type \"On\"\n!!!RACERS START YOUR ENGINES!!!\nstart: ",true );
         input.nextLine ();
         racer.car.turnOnOff ();
 
         shortspacing ();
         out.println ("To Accelerate Type \"A\" & To Decelerate Type \"D\"");
-        int odometerReset = 0;
-        return odometerReset;
+
+        return 0;
     }
 
     public static int gasOrBrake(Racer racer, Course course){
@@ -164,8 +155,7 @@ public abstract class Game_1_CLI {
 
 
     public static boolean stopGame(){
-        out.print ("Do You Want To Play Again?\nY|N: ");
-        String ui = input.next ();
+        String ui = FilterUI.getString ( "Do You Want To Play Again?\nY|N: ",true );
             switch (ui){
                 case "Y","y","Yes","yes" ->{
                     out.println ("I See Your Ready To Lose Again!");

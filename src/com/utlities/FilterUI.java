@@ -36,8 +36,36 @@ public abstract class FilterUI {
    }
 
    public static int getInt (int min, int max, String prompt){
-   int ui = min - 1;
+      int option = min - 1;
+      do {
+         System.out.print(prompt);
+         String ui = input.nextLine();
+         try{
+            option = Integer.parseInt(ui);
+         } catch (NumberFormatException err) {
+            System.out.println("Please Enter A Number! ");
+         } catch (Exception err) {
+            System.out.println("General Error!");
+         }
+      } while (option < min || option > max);
 
-   return ui;
+      return option;
    }
+
+   public static boolean getBoolean(String prompt){
+      boolean check = false;
+
+     String ui = getString ( "True Or False? ", true );
+      do {
+
+         if(ui.matches ( "^[Tt][Rr][Uu][Ee]$")){
+            check = true;
+         }else check = false;
+
+     } while(!ui.matches ( "^([Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee])$") );
+
+      return check;
+   }
+
+
 }
