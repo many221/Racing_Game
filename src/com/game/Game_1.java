@@ -43,12 +43,13 @@ public class Game_1 {
 //               boolean passedGoal =
 //               boolean hasFinished  = playerOneOdometer <= course.ROAD.getGoal ();
             int i = 0;
-            while (i < course.ROAD.getGoal ()) {
+           do {
                 playerOneOdometer = Game_1_CLI.gasOrBrake ( playerOne, course );
                 System.out.println ( "Tick: " + tickCount + "| Odometer: " + playerOneOdometer + "| Course Length " + course.ROAD.getRoadLength () + "| Finish Line: " + course.ROAD.getGoal () + "| Distance Left Till Finish: " + ( course.ROAD.getRoadLength () - playerOneOdometer ) );
+                //if statement here to
                 tickCount++;
                 i = playerOneOdometer;
-            }
+            } while (i < course.ROAD.getRoadLength ());
             ;
 
 
@@ -60,16 +61,7 @@ public class Game_1 {
 
     }
 
-
-
     //Getters & Setters
-    private void setRunning(boolean running) {
-        isRunning = running;
-    }
-
-    public boolean isRunning() {
-        return isRunning;
-    }
 
     public static int getTickCount() {
         return tickCount;

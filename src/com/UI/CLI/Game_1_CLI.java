@@ -63,7 +63,7 @@ public abstract class Game_1_CLI {
                     shortspacing ();
 
                     int ui2 = FilterUI.getInt ( 1,3,"Please Choose A Racer!\n1) Lewis Hamilton And His Mach 5\n2) You And Your Mustang\n3) Your Lil Sister And Her Yaris\nSelection: " );
-                    input.nextLine ();
+//                    input.nextLine ();
                     shortspacing ();
 
                     switch (ui2){
@@ -87,7 +87,17 @@ public abstract class Game_1_CLI {
                 }
             }
         shortspacing ();
-        out.println ("Now Let's See Those Stats!\n\n" + chosenRacer.toString ());
+//        try {
+//            Thread.sleep ( 1000 );
+//        } catch (InterruptedException e) {
+//            e.printStackTrace ();
+//        }
+        out.println ("Now Let's See Those Stats!\n" + chosenRacer.toString ());
+        try {
+            Thread.sleep ( 1000 );
+        } catch (InterruptedException e) {
+            e.printStackTrace ();
+        }
         return chosenRacer;
     }
 
