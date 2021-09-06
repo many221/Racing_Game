@@ -134,7 +134,8 @@ public abstract class Game_1_CLI {
         return 0;
     }
 
-    public static int gasOrBrake(Racer racer, Course course){
+    public static int gasOrBrake(Racer racer, Course course)
+    {
         Game_1_CLI_Graphics graphics;
         graphics = new Game_1_CLI_Graphics (racer, course);
   //      Game_1_CLI_Graphics.getGraphics (racer.car.getOdometer ());
