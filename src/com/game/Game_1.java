@@ -29,6 +29,7 @@ public class Game_1 {
 
     public static void run(){
 
+
         do {
             Game_1_CLI.longSpacing ();
             playerOne = null;
@@ -45,16 +46,24 @@ public class Game_1 {
             int i = 0;
            do {
                 playerOneOdometer = Game_1_CLI.gasOrBrake ( playerOne, course );
-                System.out.println ( "Tick: " + tickCount + "| Odometer: " + playerOneOdometer + "| Course Length " + course.ROAD.getRoadLength () + "| Finish Line: " + course.ROAD.getGoal () + "| Distance Left Till Finish: " + ( course.ROAD.getRoadLength () - playerOneOdometer ) );
-                //if statement here to
+
+                int distance = course.ROAD.getRoadLength () - playerOneOdometer;
+                if(distance < 0 ){distance = 0;}
+               System.out.println (
+                        "Tick: " + tickCount + "| Odometer: " + playerOneOdometer + "| Course Length "
+                        + course.ROAD.getRoadLength () + "| Finish Line: " + course.ROAD.getGoal ()
+                        + "| Distance Left Till Finish: " +  distance);
+                //TODO if statement here to
+
                 tickCount++;
+
                 i = playerOneOdometer;
             } while (i < course.ROAD.getRoadLength ());
             ;
 
 
             Game_1_CLI.longSpacing ();
-            Game_1_CLI.racing ();
+            Game_1_CLI.congratMSG ();
             Game_1_CLI.longSpacing ();
             isRunning = Game_1_CLI.stopGame ();
         } while ( isRunning);

@@ -101,13 +101,17 @@ public class Game_1_CLI_Graphics {
 
         int amountToMove = trackLength - moves;
 
+        if(amountToMove <= 1 ){amountToMove
+         = 2; }
         test2 = new String[trackLength];
+
 
         for (int i = 0; i < trackLength; i++) {
 
             test2[i] = " ";
-            if (i == goal - 1)test2[i] = checkeredFlag;
             if(i >= amountToMove )test2[i] = whoosh;
+            if (i == goal - 1)test2[i] = checkeredFlag;
+
 
         }
 

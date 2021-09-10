@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
         //ClI Version
-        Game_1.run ();
+        Game_1_CLI.startGame ();
 
 
     }

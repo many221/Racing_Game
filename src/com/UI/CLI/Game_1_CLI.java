@@ -17,23 +17,17 @@ public abstract class Game_1_CLI {
 
     public static void startGame(){
       String firstPrompt = FilterUI.getString ( "Hello There!\nDo You Want To Race?\nY|N: ",true );
-     while (!validEntry){
       switch (firstPrompt){
           case "Y","y","Yes","yes" ->{
               Game_1.run ();
-              validEntry = true;
-          }
-          case "N","n","No","no" ->{
-              out.println ("See Ya Later Slowpoke!");
-              validEntry = true;
+
           }
           default -> {
-              out.println ("Please Enter Valid Entry");
-              validEntry = false;
+              out.println ("See Ya Later Slowpoke!");
           }
       }
      }
-    }
+
 
     //For Two Player System
     public static int playerCount(){
@@ -47,6 +41,7 @@ public abstract class Game_1_CLI {
         int ui = FilterUI.getInt ( 1,2,"Choose An Option!\n1) Build Your Own Racer\n2) Choose A Prebuilt One?\nSelection: " );
             switch (ui){
                 case 1 -> {
+                    //TODO FIX SISTER AS DEFAULT RACER
                     shortspacing ();
                     int driver = 0;
                     int car = 0;
@@ -142,25 +137,31 @@ public abstract class Game_1_CLI {
         String ui = FilterUI.getString ( "Gas Or Brake: ", true );
         switch (ui){
             case "A","a" ->{
-                Game_1_CLI_Graphics.getGraphics (racer.car.getOdometer ());
+
                 racer.car.gasPedal ();
                 out.println (racer.car.getPowaMaker ().getEngineSound () + " Speedometer: "+ racer.car.getSpeedometer ());
             }
             case "D","d" ->{
-               Game_1_CLI_Graphics.getGraphics (racer.car.getOdometer ());
+                racer.car.brakePedal ();
                 out.println ("~Braking Sound~"  + " Speedometer: "+ racer.car.getSpeedometer ());
+
             }
             default -> {
-                Game_1_CLI_Graphics.getGraphics (racer.car.getOdometer ());
-                out.println ("Car Will Just Coast"  + " Speedometer: "+ racer.car.getSpeedometer ());
                 racer.car.coast ();
+                out.println ("Car Will Just Coast"  + " Speedometer: "+ racer.car.getSpeedometer ());
+
+
             }
         }
+
+        Game_1_CLI_Graphics.getGraphics (racer.car.getOdometer ());
+        //
         return racer.car.getOdometer ();
     }
 
-    public static void racing(){
-        out.println ("Congratulations!!! \nYou Have Finished The Race In " +  Game_1.getTickCount () + " Ticks");
+    public static void congratMSG(){
+
+        out.println ("Congratulations!!! \nYou Have Finished The Race In " +  (Game_1.getTickCount () - 1) + " Ticks");
     }
 
 
